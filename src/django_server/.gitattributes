@@ -1,3 +1,4 @@
 django_server/env.py filter=git-crypt diff=git-crypt
 django_server/settings/ filter=git-crypt diff=git-crypt
+django_server/settings/* filter=git-crypt diff=git-crypt
 django_server/settings.py filter=git-crypt diff=git-crypt
