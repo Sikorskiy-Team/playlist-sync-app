@@ -6,7 +6,7 @@ executors:
       - image: google/cloud-sdk
     working_directory: ~/work
     environment:
-        DJANGO_ENV: $CIRCLE_BRANCH
+        DJANGO_ENV: development #TODO: $CIRCLE_BRANCH
   git-crypt:
     docker:
       - image: xueshanf/docker-git-crypt
@@ -30,7 +30,7 @@ jobs:
             - repo
                
   deploy-django:
-    executor: cloug-sdk
+    executor: cloud-sdk
     steps:
       - attach_workspace:
           at: ~/work
