@@ -43,8 +43,7 @@ jobs:
           name: Set up gcloud config
           working_directory: repo/src/django_server
           command: |
-            echo $GCLOUD_KEY | base64 -di > ~/keyfile.json
-            gcloud auth activate-service-account ${GCLOUD_ACC} --key-file=~/keyfile.json
+            echo $GCLOUD_KEY | base64 -di | gcloud auth activate-service-account ${GCLOUD_ACC} --key-file=-
             gcloud --quiet config set project ${GCLOUD_PROJECT}
             gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
       - run:
