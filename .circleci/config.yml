@@ -36,19 +36,19 @@ jobs:
       - attach_workspace:
           at: ~/work
       - run:
-          name: Go to Django dir
-          command: cd ./repo/src/django_server
-      - run:
           name: Copy across app.yaml config
+          working_directory: repo/src/django_server
           command: ./app.yaml.sh > ./app.yaml
       - run:
           name: Set up gcloud config
+          working_directory: repo/src/django_server
           command: |
             echo $GCLOUD_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${GCLOUD_PROJECT}
             gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
       - run:
           name: Deploying to App Engine
+          working_directory: repo/src/django_server
           command: gcloud app deploy app.yaml
 
 workflows:
