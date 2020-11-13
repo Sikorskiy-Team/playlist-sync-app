@@ -1,0 +1,61 @@
+version: 2.1
+
+executors:
+  cloud-sdk:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: ~/work
+    environment:
+        DJANGO_ENV: development #TODO: $CIRCLE_BRANCH
+  git-crypt:
+    docker:
+      - image: xueshanf/docker-git-crypt
+    working_directory: ~/work
+
+
+jobs:
+  encrypt:
+    executor: git-crypt
+    steps:
+      - checkout:
+          path: repo
+      - run:
+          name: Encrypt repo
+          command: |
+            echo $GIT_CRYPT_KEY | base64 -d > ~/keyfile
+            cd ./repo
+            git-crypt unlock ~/keyfile
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - repo
+               
+  deploy-django:
+    executor: cloud-sdk
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Copy across app.yaml config
+          working_directory: repo/src/django_server
+          command: ./app.yaml.sh > ./app.yaml
+      - run:
+          name: Set up gcloud config
+          working_directory: repo/src/django_server
+          command: |
+            echo $GCLOUD_KEY | base64 -di | gcloud auth activate-service-account ${GCLOUD_ACC} --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT}
+            gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
+      - run:
+          name: Deploying to App Engine
+          working_directory: repo/src/django_server
+          command: gcloud app deploy app.yaml
+
+workflows:
+  deploy:
+    jobs:
+      - encrypt
+      - deploy-django:
+          name: deploy-django
+          requires:
+            - encrypt

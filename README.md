@@ -1,7 +1,7 @@
 <div align="center"><img src="https://github.com/Sikorskiy-Team/playlist-sync-app/raw/master/logo.png"></div>
 
 # CubeMusic
-![GitHub repo size](https://img.shields.io/github/repo-size/Sikorskiy-Team/playlist-sync-app) [![Maintainability](https://api.codeclimate.com/v1/badges/623ac26a15072a3b2153/maintainability)](https://codeclimate.com/github/Sikorskiy-Team/playlist-sync-app/maintainability) ![GitHub](https://img.shields.io/github/license/Sikorskiy-Team/playlist-sync-app) [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B21281%2Fgithub.com%2FSikorskiy-Team%2Fplaylist-sync-app.svg?type=shield)](https://app.fossa.com/projects/custom%2B21281%2Fgithub.com%2FSikorskiy-Team%2Fplaylist-sync-app?ref=badge_shield)
+[![CircleCI](https://circleci.com/gh/Sikorskiy-Team/playlist-sync-app.svg?style=shield)](https://circleci.com/gh/Sikorskiy-Team/playlist-sync-app) ![GitHub repo size](https://img.shields.io/github/repo-size/Sikorskiy-Team/playlist-sync-app) [![Maintainability](https://api.codeclimate.com/v1/badges/623ac26a15072a3b2153/maintainability)](https://codeclimate.com/github/Sikorskiy-Team/playlist-sync-app/maintainability) ![GitHub](https://img.shields.io/github/license/Sikorskiy-Team/playlist-sync-app) [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B21281%2Fgithub.com%2FSikorskiy-Team%2Fplaylist-sync-app.svg?type=shield)](https://app.fossa.com/projects/custom%2B21281%2Fgithub.com%2FSikorskiy-Team%2Fplaylist-sync-app?ref=badge_shield)
 
 A Gatsby-Django app to help you sync your playlists.
 
