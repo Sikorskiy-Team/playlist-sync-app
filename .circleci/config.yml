@@ -23,6 +23,7 @@ jobs:
           name: Encrypt repo
           command: |
             echo $GIT_CRYPT_KEY | base64 -d > ~/keyfile
+            cd ./repo
             git-crypt unlock ~/keyfile
       - persist_to_workspace:
           root: ~/work
