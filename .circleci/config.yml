@@ -1,21 +1,60 @@
 version: 2.1
 
-orbs:
-  python: circleci/python@0.2.1
+executors:
+  cloud-sdk:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: ~/work
+    environment:
+        DJANGO_ENV: $CIRCLE_BRANCH
+  git-crypt:
+    docker:
+      - image: xueshanf/docker-git-crypt
+    working_directory: ~/work
+
 
 jobs:
-  build-and-test:
-    executor: python/default
+  encrypt:
+    executor: git-crypt
     steps:
-      - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
+      - checkout:
+          path: repo
       - run:
-          command: ./manage.py test
-          name: Test
+          name: Encrypt repo
+          command: |
+            echo $GIT_CRYPT_KEY | base64 --decode > ~/keyfile
+            git-crypt unlock ~/keyfile
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - repo
+               
+  deploy-django:
+    executor: cloug-sdk
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Go to Django dir
+          command: cd ./repo/src/django_server
+      - run:
+          name: Copy across app.yaml config
+          command: ./app.yaml.sh > ./app.yaml
+      - run:
+          name: Set up gcloud config
+          command: |
+            echo $GCLOUD_KEY | base64 --decode | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCLOUD_PROJECT}
+            gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
+      - run:
+          name: Deploying to App Engine
+          command: gcloud app deploy app.yaml
 
 workflows:
-  main:
+  deploy:
     jobs:
-      - build-and-test
+      - encrypt
+      - deploy-django:
+          name: deploy-django
+          requires:
+            - encrypt
