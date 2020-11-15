@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Copy across app.yaml config
           working_directory: repo/src/django_server
-          command: ./app.yaml.sh > ./app.yaml
+          command: python ./app.yaml.py
       - run:
           name: Set up gcloud config
           working_directory: repo/src/django_server
