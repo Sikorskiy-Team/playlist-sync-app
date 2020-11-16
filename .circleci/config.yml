@@ -7,6 +7,12 @@ executors:
     working_directory: ~/work
     environment:
         DJANGO_ENV: development #TODO: $CIRCLE_BRANCH
+  gatsby:
+    docker:
+      - image: circleci/node:15
+    working_directory: ~/work
+    environment:
+        GATSBY_ENV: development #TODO: $CIRCLE_BRANCH
   git-crypt:
     docker:
       - image: xueshanf/docker-git-crypt
@@ -50,6 +56,37 @@ jobs:
           name: Deploying to App Engine
           working_directory: repo/src/django_server
           command: gcloud app deploy app.yaml
+          
+  deploy-gatsby:
+    executor: gatsby
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+      - run:
+          name: Install Dependencies
+          command: npm install
+          working_directory: repo/src/gatsby-app
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - ./repo/src/gatsby-app/node_modules
+      - run:
+          name: Gatsby Build
+          command: npm run build
+          working_directory: repo/src/gatsby-app
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+          working_directory: repo/src/gatsby-app
+          
+            
+  
 
 workflows:
   deploy:
@@ -57,5 +94,9 @@ workflows:
       - encrypt
       - deploy-django:
           name: deploy-django
+          requires:
+            - encrypt
+      - deploy-gatsby:
+          name: deploy-gatsby
           requires:
             - encrypt

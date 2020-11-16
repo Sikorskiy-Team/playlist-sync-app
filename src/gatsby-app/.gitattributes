@@ -1,2 +1,4 @@
 # dotenv environment variable files
 .env* filter=git-crypt diff=git-crypt
+.firebaserc filter=git-crypt diff=git-crypt
+firebase.json filter=git-crypt diff=git-crypt
