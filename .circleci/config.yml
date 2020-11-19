@@ -6,13 +6,13 @@ executors:
       - image: google/cloud-sdk
     working_directory: ~/work
     environment:
-        DJANGO_ENV: development #TODO: $CIRCLE_BRANCH
+        DJANGO_ENV: $CIRCLE_BRANCH
   gatsby:
     docker:
       - image: circleci/node:15
     working_directory: ~/work
     environment:
-        GATSBY_ENV: development #TODO: $CIRCLE_BRANCH
+        GATSBY_ENV: $CIRCLE_BRANCH
   git-crypt:
     docker:
       - image: xueshanf/docker-git-crypt
