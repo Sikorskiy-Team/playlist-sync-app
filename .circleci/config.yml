@@ -91,12 +91,27 @@ jobs:
 workflows:
   deploy:
     jobs:
-      - encrypt
+      - encrypt:
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - development
       - deploy-django:
           name: deploy-django
           requires:
             - encrypt
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - development
       - deploy-gatsby:
           name: deploy-gatsby
           requires:
             - encrypt
+          filters:
+            branches:
+              only: master
