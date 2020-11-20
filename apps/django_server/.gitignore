@@ -158,3 +158,4 @@ media/
 !**/migrations/__init__.py
 
 .idea
+app.yaml
