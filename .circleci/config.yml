@@ -5,14 +5,10 @@ executors:
     docker:
       - image: google/cloud-sdk
     working_directory: ~/work
-    environment:
-        DJANGO_ENV: $CIRCLE_BRANCH
   gatsby:
     docker:
       - image: circleci/node:15
     working_directory: ~/work
-    environment:
-        GATSBY_ENV: $CIRCLE_BRANCH
   git-crypt:
     docker:
       - image: xueshanf/docker-git-crypt
@@ -44,7 +40,9 @@ jobs:
       - run:
           name: Copy across app.yaml config
           working_directory: repo/apps/django_server
-          command: python ./app.yaml.py
+          command: |
+            echo "export DJANGO_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
+            python ./app.yaml.py
       - run:
           name: Set up gcloud config
           working_directory: repo/apps/django_server
@@ -78,7 +76,9 @@ jobs:
             - ./repo/apps/gatsby-app/node_modules
       - run:
           name: Gatsby Build
-          command: npm run build
+          command: |
+            echo "export GATSBY_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
+            npm run build
           working_directory: repo/apps/gatsby-app
       - run:
           name: Firebase Deploy
