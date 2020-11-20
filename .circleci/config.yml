@@ -6,7 +6,13 @@ executors:
       - image: google/cloud-sdk
     working_directory: ~/work
     environment:
-        DJANGO_ENV: development #TODO: $CIRCLE_BRANCH
+        DJANGO_ENV: $CIRCLE_BRANCH
+  gatsby:
+    docker:
+      - image: circleci/node:15
+    working_directory: ~/work
+    environment:
+        GATSBY_ENV: $CIRCLE_BRANCH
   git-crypt:
     docker:
       - image: xueshanf/docker-git-crypt
@@ -37,25 +43,75 @@ jobs:
           at: ~/work
       - run:
           name: Copy across app.yaml config
-          working_directory: repo/src/django_server
-          command: ./app.yaml.sh > ./app.yaml
+          working_directory: repo/apps/django_server
+          command: python ./app.yaml.py
       - run:
           name: Set up gcloud config
-          working_directory: repo/src/django_server
+          working_directory: repo/apps/django_server
           command: |
             echo $GCLOUD_KEY | base64 -di | gcloud auth activate-service-account ${GCLOUD_ACC} --key-file=-
             gcloud --quiet config set project ${GCLOUD_PROJECT}
             gcloud --quiet config set compute/zone ${GCLOUD_ZONE}
       - run:
           name: Deploying to App Engine
-          working_directory: repo/src/django_server
+          working_directory: repo/apps/django_server
           command: gcloud app deploy app.yaml
+          
+  deploy-gatsby:
+    executor: gatsby
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+      - run:
+          name: Install Dependencies
+          command: npm install
+          working_directory: repo/apps/gatsby-app
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+          paths:
+            - ./repo/apps/gatsby-app/node_modules
+      - run:
+          name: Gatsby Build
+          command: npm run build
+          working_directory: repo/apps/gatsby-app
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
+          working_directory: repo/apps/gatsby-app
+          
+            
+  
 
 workflows:
   deploy:
     jobs:
-      - encrypt
+      - encrypt:
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - development
       - deploy-django:
           name: deploy-django
           requires:
             - encrypt
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - development
+      - deploy-gatsby:
+          name: deploy-gatsby
+          requires:
+            - encrypt
+          filters:
+            branches:
+              only: master
