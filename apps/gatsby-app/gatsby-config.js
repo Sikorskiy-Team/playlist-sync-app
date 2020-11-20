@@ -36,34 +36,13 @@ module.exports = {
     title: `Playlist Sync App`,
     siteUrl: process.env.GATSBY_APP_URL,
     description: `This app will help you to sync playlists in different streaming platforms`,
-    author: ``, //TODO
+    author: `Bondarenko Stanislav <stassss2009@gmail.com>, Zheleznova Valeriya <lzheleznova2609@gmail.com>, Tryfanov Dmytro <worthdyingfor8@gmail.com>, Deriugin Egor <gorynychgeorge@gmail.com>`, //TODO
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: process.env.GATSBY_GA_TRACKING_ID,
-    //   },
-    // },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        fonts: [
-          {
-            family: 'Roboto',
-            variants: ['100', '300', '400', '500', '700'],
-            subsets: ['latin-ext'],
-          },
-          {
-            family: 'Roboto Mono',
-            variants: ['100', '300', '400', '500', '700'],
-            subsets: ['latin-ext'],
-          },
-          {
-            family: 'Fira Mono',
-            variants: ['400'],
-          },
-        ],
+        trackingId: process.env.GATSBY_GA_TRACKING_ID,
       },
     },
     `gatsby-plugin-react-helmet`,
