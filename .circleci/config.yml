@@ -42,6 +42,7 @@ jobs:
           working_directory: repo/apps/django_server
           command: |
             echo "export DJANGO_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
+            source $BASH_ENV
             python ./app.yaml.py
       - run:
           name: Set up gcloud config
@@ -78,6 +79,7 @@ jobs:
           name: Gatsby Build
           command: |
             echo "export GATSBY_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
+            source $BASH_ENV
             npm run build
           working_directory: repo/apps/gatsby-app
       - run:
