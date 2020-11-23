@@ -1,5 +1,5 @@
 let activeEnv = process.env.GATSBY_ENV || 'development'
-
+console.log(activeEnv)
 require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
@@ -55,6 +55,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-realfavicongenerator`,
       options: {
