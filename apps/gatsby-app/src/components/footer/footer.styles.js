@@ -4,7 +4,7 @@ const FooterStyle = styled.div`
   height: 400px; 
   width: 100%; 
   position: absolute;
-  top: 3072px; 
+  top: 3070px; 
   left: 0px; 
 
   display: flex; 
@@ -68,6 +68,40 @@ const FooterStyle = styled.div`
     width: 50px; 
     height: 50px;
   }
+  
+  @media(max-width: 1100px){
+    .company{
+    display: flex; 
+    flex-direction: column; 
+    margin-left: 21px; 
+    margin-right: 100px; 
+    }
+
+    .inst{
+    display: flex;
+    margin-left: 100px; 
+    margin-right: 25px;
+    width: 50px; 
+    height: 50px;   
+    }
+  }
+
+  @media(max-width: 800px){
+    .company{
+    display: flex; 
+    flex-direction: column; 
+    margin-left: 21px; 
+    margin-right: 50px; 
+    }
+
+    .inst{
+    display: flex;
+    margin-left: 50px; 
+    margin-right: 25px;
+    width: 50px; 
+    height: 50px;   
+    }
+  }
 
   background: #292929; 
 `
@@ -80,6 +114,9 @@ const MenuTitle = styled.p`
   display: flex;
   margin-bottom: 10px;  
 
+  @media(max-width: 800px){
+    font-size: 20px; 
+  }
   color: #FFFFFF; 
 `
 
@@ -106,6 +143,10 @@ const MenuItems = styled.a`
     text-decoration: underline;
   }
 
+  @media(max-width: 800px){
+    font-size: 20px; 
+  }
+  
   color: #FFFFFF; 
 `
 export {FooterStyle, MenuTitle, MenuItems}
