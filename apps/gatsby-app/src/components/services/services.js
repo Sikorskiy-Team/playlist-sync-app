@@ -1,12 +1,18 @@
 import React from "react"
 
-
 import wave from "../../images/wave.png"
 import youtube from "../../images/Youtube Music.png"
 import spotify from "../../images/Spotify.png"
 import deezer from "../../images/Deezer.png"
 
-import {TitleStyle, ServicesPosition, WaveStyle, Morestyle, Pos, Socialsstyle} from "./services.styles"
+import {
+  TitleStyle,
+  ServicesPosition,
+  WaveStyle,
+  Morestyle,
+  Pos,
+  Socialsstyle,
+} from "./services.styles"
 
 const Services = () => {
   return (
@@ -16,13 +22,17 @@ const Services = () => {
           <img src={wave} alt=""></img>
         </div>
         <Pos>
-          <div className="Title">
+          <div className="title">
             <TitleStyle>SERVICES WE SUPPORT</TitleStyle>
           </div>
           <div className="row">
-            <Socials picture={youtube} classname="you-tube-music" />
-            <Socials picture={spotify} classname="spotify" />
-            <Socials picture={deezer} classname="deezer" />
+            <Socials
+              picture={youtube}
+              classname="row__item"
+              id="you-tube-music"
+            />
+            <Socials picture={spotify} classname="row__item" id="spotify" />
+            <Socials picture={deezer} classname="row__item" id="deezer" />
           </div>
           <div className="more">
             <Morestyle>MORE SERVICES COMING SOON</Morestyle>
@@ -33,12 +43,12 @@ const Services = () => {
   )
 }
 
-const Socials = ({ picture, classname }) => {
+const Socials = ({ picture, classname, id }) => {
   return (
     <div>
       <div className={classname}>
         <Socialsstyle>
-          <img src={picture} className="pic" id={classname}></img>
+          <img src={picture} className="pic" id={id}></img>
         </Socialsstyle>
       </div>
     </div>
