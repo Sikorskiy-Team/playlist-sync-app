@@ -16,7 +16,7 @@ const HeaderStyle = styled.header`
 
   .navigation {
     grid-area: navi;
-    float: left; 
+    float: left;
   }
 
   .profile-button {
@@ -83,9 +83,9 @@ const Header = () => {
             Stop wasting your time transferring music data between different
             streaming platforms, let CubeMusic do the job!
           </p>
-          <a href="#" className="button-Start">
+          <Link to="/app" className="button-Start">
             Start
-          </a>
+          </Link>
         </div>
       </MainStyle>
     </div>

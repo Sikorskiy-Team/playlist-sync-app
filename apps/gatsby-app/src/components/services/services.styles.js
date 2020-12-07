@@ -10,15 +10,15 @@ const TitleStyle = styled.h1`
   line-height: 48px;
   text-align: center;
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     font-size: 46px;
   }
 
-  @media (max-width: 425px){
+  @media (max-width: 425px) {
     font-size: 24px;
   }
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     font-size: 36px;
   }
 
@@ -47,18 +47,18 @@ const Morestyle = styled.h1`
   line-height: 48px;
   text-align: center;
 
-  @media (max-width: 1024px){
+  @media (max-width: 1024px) {
     font-size: 46px;
   }
 
-  @media (max-width: 425px){
+  @media (max-width: 425px) {
     font-size: 24px;
   }
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     font-size: 36px;
   }
-  
+
   color: #ffffff;
 `
 const Pos = styled.div`
@@ -74,7 +74,7 @@ const Pos = styled.div`
     flex-direction: row;
   }
 
-  .you-tube-music {
+  .row__item {
     display: flex;
     margin-top: 49.5px;
     margin-bottom: 49.5px;
@@ -82,22 +82,7 @@ const Pos = styled.div`
     margin-left: 38px;
   }
 
-  .spotify {
-    display: flex;
-    margin-top: 49.5px;
-    margin-bottom: 49.5px;
-    margin-right: 38px;
-    margin-left: 38px;
-  }
-
-  .deezer {
-    display: flex;
-    margin-top: 49.5px;
-    margin-bottom: 49.5px;
-    margin-left: 38px;
-  }
-
-  .Title {
+  .title {
     display: flex;
     margin-bottom: 49.5px;
   }
@@ -107,43 +92,31 @@ const Pos = styled.div`
     margin-top: 49.5px;
   }
 
-  @media(max-width: 988px){
+  @media (max-width: 988px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     top: 100px;
 
     .row {
-    display: flex;
-    flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
 
-    .you-tube-music {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    .row__item {
+      display: flex;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
-    .spotify {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    }
-
-    .deezer {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    }
-
-    .Title {
-    display: flex;
-    margin-bottom: 20px;
+    .title {
+      display: flex;
+      margin-bottom: 20px;
     }
 
     .more {
-    display: flex;
-    margin-top: 20px;
+      display: flex;
+      margin-top: 20px;
     }
   }
 `
@@ -178,7 +151,6 @@ const Socialsstyle = styled.div`
     margin-bottom: 48px;
     margin-right: 17px;
   }
-
 `
 
-export {TitleStyle, ServicesPosition, WaveStyle, Morestyle, Pos, Socialsstyle}
+export { TitleStyle, ServicesPosition, WaveStyle, Morestyle, Pos, Socialsstyle }

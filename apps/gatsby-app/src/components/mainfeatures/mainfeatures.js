@@ -14,7 +14,7 @@ const MainFeatures = () => {
         <MainFeaturesStyle>
           <div className="Title">
             <TitleStyle>
-              <h1>MAIN FEATURES</h1>
+              MAIN FEATURES
             </TitleStyle>
           </div>
           <div className="firstRow">
