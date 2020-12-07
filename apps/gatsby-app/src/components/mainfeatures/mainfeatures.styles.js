@@ -104,6 +104,9 @@ const MainFeaturesStyle = styled.div`
     width: fit-content; 
   }
 
+  @media(max-width: 1080px){
+    
+  }
   background: #ffffff;
 `
 
