@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import wave from "../../images/wave2.png"
 import logo from "../../images/Logofoot.png"
@@ -20,24 +21,26 @@ const Footer = () => {
           </div>
           <div className="socials">
             <MenuTitle>Socials</MenuTitle>
-            <MenuItems href="">Contact us</MenuItems>
-            <MenuItems href="">Telegram bot</MenuItems>
+            <MenuItems to="/">Contact us</MenuItems>
+            <MenuItems to="/">Telegram bot</MenuItems>
           </div>
           <div className="company">
             <MenuTitle>Company</MenuTitle>
-            <MenuItems href="">About</MenuItems>
-            <MenuItems href="">Support</MenuItems>
-            <MenuItems href="">Privacy Policy</MenuItems>
+            <MenuItems to="/">About</MenuItems>
+            <MenuItems to="/">Support</MenuItems>
+            <MenuItems to="/">Privacy Policy</MenuItems>
           </div>
-          <div className="inst">
-            <a href="http://www.instagram.com">
-              <img src={instagram} alt="instagram" />
-            </a>
-          </div>
-          <div className="fb">
-            <a href="http://www.facebook.com">
-              <img src={facebook} alt="facebook" />
-            </a>
+          <div className="socials-links">
+            <div className="inst">
+              <a href="http://www.instagram.com" target="_blank">
+                <img src={instagram} alt="instagram" />
+              </a>
+            </div>
+            <div className="fb">
+              <a href="http://www.facebook.com" target="_blank">
+                <img src={facebook} alt="facebook" />
+              </a>
+            </div>
           </div>
         </div>
       </FooterStyle>
