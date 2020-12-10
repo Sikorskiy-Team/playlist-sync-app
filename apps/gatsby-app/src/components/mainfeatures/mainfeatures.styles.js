@@ -15,6 +15,10 @@ const TitleStyle = styled.h1`
   @media (max-width: 1080px) {
     font-size: 46px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
 `
 
 const RectangleStyle = styled.div`
@@ -36,6 +40,7 @@ const RectangleStyle = styled.div`
 
   .Image > img {
     height: 100px;
+    /* object-fit: cover; */
   }
   .textBlock {
     margin-top: 25px;
@@ -49,23 +54,51 @@ const RectangleStyle = styled.div`
 
     border-radius: 42px;
 
-    /* .Image > img {
+    .Image > img {
       height: 60px;
       width: 60px;
-    } */
+    }
 
     .Image {
       margin-top: 25px;
       margin-left: 30px;
       margin-right: 15px;
       display: flex;
-      /* height: 60px;
-      width: 60px; */
+      height: 60px;
+      width: 60px;
     }
 
     .textBlock {
       margin-top: 11px;
-      margin-left: 37px;
+      /* margin-left: 37px; */
+      display: flex;
+    }
+  }
+
+  @media (max-width: 425px) {
+    height: 100px;
+    width: 333px;
+
+    border-radius: 30px;
+
+    .Image > img {
+      height: 60px;
+      width: 60px;
+    }
+
+    .Image {
+      /*       margin-top: 25px;
+      margin-left: 30px;
+      margin-right: 15px; */
+      display: flex;
+      height: 60px;
+      width: 60px;
+    }
+
+    .textBlock {
+      /* margin-top: 11px; */
+      margin-left: 20px;
+      width: 185px;
       display: flex;
     }
   }
@@ -219,6 +252,21 @@ const TextStyle = styled.p`
     .BlockText {
       font-size: 14px;
       color: #575757;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .BlockTitle {
+      margin-top: 0px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .BlockText {
+      font-size: 12px;
+      color: #575757;
+      width: 185px;
+      line-height: 18px;
     }
   }
 `
