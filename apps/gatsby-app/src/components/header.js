@@ -75,18 +75,6 @@ const Header = () => {
             </HeaderStyle>
           </div>
         </header>
-        <div className="title-header">
-          <p className="text-Playlist1">
-            TRANSFER YOUR PLAYLISTS AND FAVORITES
-          </p>
-          <p className="text-Playlist2">
-            Stop wasting your time transferring music data between different
-            streaming platforms, let CubeMusic do the job!
-          </p>
-          <Link to="/app" className="button-Start">
-            Start
-          </Link>
-        </div>
       </MainStyle>
     </div>
   )
