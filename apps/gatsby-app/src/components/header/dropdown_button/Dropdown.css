@@ -1,0 +1,36 @@
+.Dropdown {
+	position: relative;
+	background: #292929;
+}
+
+.Dropdown__list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 10px;
+	border: 1px solid rgba(151, 151, 151, 0.15);
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+}
+
+.Dropdown__option {
+	padding: 12px 20px;
+	line-height: 1.3;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color 0.35s, color 0.35s;
+}
+
+.Dropdown__option--selected {
+	background-color: #575757;
+	color: white;
+	cursor: default;
+}
+
+.Dropdown__option:not(.Dropdown__option--selected):hover {
+	background-color: #C4C4C4;
+	transition-duration: 0.175s;
+}
