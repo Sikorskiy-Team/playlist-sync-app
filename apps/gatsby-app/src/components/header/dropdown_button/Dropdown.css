@@ -34,3 +34,18 @@
 	background-color: #C4C4C4;
 	transition-duration: 0.175s;
 }
+
+
+.Button{
+	background-color:#575757;
+	border: none;
+	border-radius: 10px;
+}
+
+.Button:focus {
+	outline: none;
+}
+
+.Button__text{
+	color: white;
+}
