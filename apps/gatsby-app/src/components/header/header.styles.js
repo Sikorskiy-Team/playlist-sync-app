@@ -63,7 +63,7 @@ const HeaderStyle = styled.header`
     width: 100%;
   }
 
-  .
+  
 
 
 
