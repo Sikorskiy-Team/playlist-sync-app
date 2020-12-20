@@ -14,7 +14,7 @@ const TitleStyle = styled.h1`
     font-size: 46px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     font-size: 24px;
   }
 
@@ -51,8 +51,9 @@ const Morestyle = styled.h1`
     font-size: 46px;
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 426px) {
     font-size: 24px;
+    max-width: 400px;
   }
 
   @media (max-width: 768px) {

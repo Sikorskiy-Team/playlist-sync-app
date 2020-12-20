@@ -24,6 +24,6 @@ router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
-    path('api/v1/', include('django_app.urls')),
+    #path('api/v1/', include('django_app.urls')),
     path('admin/', admin.site.urls),
 ]
