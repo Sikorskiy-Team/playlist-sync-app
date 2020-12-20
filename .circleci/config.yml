@@ -66,7 +66,7 @@ jobs:
           working_directory: repo/apps/django_server
           command: gcloud app deploy app.yaml
           
-  deploy-gatsby:
+  build-gatsby:
     executor: gatsby
     steps:
       - attach_workspace:
@@ -92,6 +92,30 @@ jobs:
             source $BASH_ENV
             npm run build
           working_directory: repo/apps/gatsby-app
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - repo
+      
+  deploy-gatsby:
+    executor: gatsby
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+      - run:
+          name: Install Dependencies
+          command: npm install
+          working_directory: repo/apps/gatsby-app
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+          paths:
+            - ./repo/apps/gatsby-app/node_modules
       - run:
           name: Firebase Deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
@@ -120,10 +144,14 @@ workflows:
                 - master
                 - staging
                 - development
+      - build-gatsby:
+          name: build-gatsby
+          requires:
+            - encrypt
       - deploy-gatsby:
           name: deploy-gatsby
           requires:
-            - encrypt
+            - build-gatsby
           filters:
             branches:
               only: master
