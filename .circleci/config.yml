@@ -43,12 +43,13 @@ jobs:
           command: |
             echo "export DJANGO_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
             source $BASH_ENV
-            python ./app.yaml.py
+            python3 ./app.yaml.py
       - run:
           name: Make migrations
           working_directory: repo/apps/django_server
           command: |
-            python -m venv venv
+            apt-get install python3-venv
+            python3 -m venv venv
             source ./venv/bin/activate
             pip install -r requirements.txt
             python manage.py makemigrations
