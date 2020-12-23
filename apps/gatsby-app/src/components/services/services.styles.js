@@ -3,7 +3,7 @@ import styled from "styled-components"
 const TitleStyle = styled.h1`
   width: 100%;
 
-  font-family: Segoe UI;
+  font-family: Noto Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
@@ -40,7 +40,7 @@ const Morestyle = styled.h1`
   position: relative;
   width: 100%;
 
-  font-family: Segoe UI;
+  font-family: Noto Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
