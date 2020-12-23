@@ -53,6 +53,23 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `locale`,
+        path: `${__dirname}/src/locale`,
+      },
+    },
+    {
+      resolve: '@wapps/gatsby-plugin-i18next',
+      options: {
+        availableLngs: ['en', 'ru'],
+        fallbackLng: 'ru',
+        i18nextOptions: {
+          debug: false,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

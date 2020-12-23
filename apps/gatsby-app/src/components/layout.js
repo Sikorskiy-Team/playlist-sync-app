@@ -10,10 +10,10 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header/header"
 import "../styles/layout.css"
+import { withTranslation } from 'react-i18next';
+import { Head } from '@wapps/gatsby-plugin-i18next';
 
-
-
-const Layout = ({ children }) => {
+const Layout = ({ children, t }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -26,6 +26,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+    <Head hreflang></Head>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
@@ -51,4 +52,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default withTranslation()(Layout);

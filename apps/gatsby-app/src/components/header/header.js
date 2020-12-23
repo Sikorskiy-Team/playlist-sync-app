@@ -1,10 +1,14 @@
-import { Link } from "gatsby"
+import { Link } from '@wapps/gatsby-plugin-i18next';
 import React from "react"
 import logo from "../../images/Logo.svg"
 import { HeaderStyle } from "./header.styles"
-import Dropdown, { Option } from './dropdown_button';
+import LanguageSwitcher from "./lang_switcher"
+import { withTranslation } from 'react-i18next';
 
-const Header = () => {
+
+
+
+const Header = ({t}) => {
   return (
     <div>
       <header>
@@ -14,13 +18,10 @@ const Header = () => {
           </div>
           <div className="navigation">
             <nav>
-              <div className = "topnav"><Link to="#">Help</Link></div>
+              <div className = "topnav"><Link to="#">{t('Help')}</Link></div>
                 
               <div className="App__content">
-              <Dropdown onSelect={value => console.log(`Selected: ${value}`)}>
-                <Option value="First">ENG</Option>
-                <Option value="Second">RUS</Option>
-              </Dropdown>
+                <LanguageSwitcher></LanguageSwitcher>
               </div>
           
             </nav>
@@ -31,4 +32,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default withTranslation()(Header)
