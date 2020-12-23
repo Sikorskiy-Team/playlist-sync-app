@@ -30,27 +30,8 @@ const HeaderStyle = styled.header`
 
 const MainStyle = styled.div`
   width: 100%;
-  height: 1024px;
   background: #292929;
   color: #ffffff;
-  position: absolute;
-  display: grid;
-
-  .head {
-    grid-area: head;
-  }
-
-  .title-header {
-    grid-area: title;
-  }
-
-  grid-template-rows: 1fr 10fr;
-  grid-template-columns: 1fr;
-  grid-row-gap: 200px;
-
-  grid-template-areas:
-    "head"
-    "title";
 `
 
 const Header = () => {
