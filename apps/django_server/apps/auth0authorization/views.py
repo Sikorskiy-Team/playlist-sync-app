@@ -1,4 +1,3 @@
-
 from functools import wraps
 import jwt
 
@@ -43,8 +42,6 @@ def requires_scope(required_scope):
     return require_scope
 
 
-
-
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def public(request):
@@ -59,4 +56,5 @@ def private(request):
 @api_view(['GET'])
 @requires_scope('read:messages')
 def private_scoped(request):
-    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'})
+    return JsonResponse({
+                            'message': 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'})
