@@ -42,7 +42,19 @@ jobs:
           working_directory: repo/apps/django_server
           command: |
             echo "export DJANGO_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
-            python ./app.yaml.py
+            source $BASH_ENV
+            python3 ./app.yaml.py
+      - run:
+          name: Make migrations
+          working_directory: repo/apps/django_server
+          command: |
+            apt-get -y install python3-venv
+            python3 -m venv venv
+            source ./venv/bin/activate
+            pip install wheel
+            pip install -r requirements.txt
+            python manage.py makemigrations
+            python manage.py migrate
       - run:
           name: Set up gcloud config
           working_directory: repo/apps/django_server
@@ -55,7 +67,7 @@ jobs:
           working_directory: repo/apps/django_server
           command: gcloud app deploy app.yaml
           
-  deploy-gatsby:
+  build-gatsby:
     executor: gatsby
     steps:
       - attach_workspace:
@@ -78,8 +90,33 @@ jobs:
           name: Gatsby Build
           command: |
             echo "export GATSBY_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
+            source $BASH_ENV
             npm run build
           working_directory: repo/apps/gatsby-app
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - repo
+      
+  deploy-gatsby:
+    executor: gatsby
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
+      - run:
+          name: Install Dependencies
+          command: npm install
+          working_directory: repo/apps/gatsby-app
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "repo/apps/gatsby-app/package-lock.json" }}
+          paths:
+            - ./repo/apps/gatsby-app/node_modules
       - run:
           name: Firebase Deploy
           command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
@@ -108,10 +145,14 @@ workflows:
                 - master
                 - staging
                 - development
+      - build-gatsby:
+          name: build-gatsby
+          requires:
+            - encrypt
       - deploy-gatsby:
           name: deploy-gatsby
           requires:
-            - encrypt
+            - build-gatsby
           filters:
             branches:
               only: master
