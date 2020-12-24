@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import { Get } from "react-axios"
 import axios from "axios"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
 
 const SecondPage = () => (
   <Layout>
