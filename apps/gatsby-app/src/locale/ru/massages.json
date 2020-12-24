@@ -1,3 +1,22 @@
 {
-    "Help": "Помощь"
+    "Help": "Помощь",
+    "Automatically synchronization playlists between streaming services":"Автоматическая синхронизация плейлистов",
+    "Synchronize":"Синхронизация",
+    "Just grab and move your entire music collection to another platform. Simply and easily!":"Просто перемести свою коллецию треков на другую платформу.Это очень просто!",
+    "Platform to platform":"С платформы на платформу",
+    "Import M3U, XSPF, iTunes TXT, CSV, URL, Text Files ...":"Импорт M3U, XSPF, iTunes TXT, CSV, URL, Text Files ...",
+    "Import":"Импорт",
+    "Get tracklists of your playlists in CSV, XML, TXT formats ...":"Получи свой список плейлиста в CSV, XML, TXT formats ...",
+    "Export":"Экспорт",
+    "Transfer playlists, albums, artists or tracks between any streaming services.":"Перекидывание плейлистов,альбомов,между,исполнителей и треков между стриминговыми платформами.",
+    "Convert":"Конвертировать",
+    "MAIN FEATURES":"Основные функции",
+    "SERVICES WE SUPPORT":"Сервисы которорые мы поддерживаем",
+    "MORE SERVICES COMING SOON":"БОЛЬШЕ СЕРВИСОВ В СКОРОМ ВРЕМЕНИ",
+    "Socials":"Соц Сети",
+    "Contact us":"Наши контакты",
+    "Telegram bot":"Телеграм Бот",
+    "About":"про нас",
+    "Support":"Поддержка",
+    "Privacy Police":"Политика конфиденциальности",
 }

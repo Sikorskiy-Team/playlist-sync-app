@@ -4,6 +4,9 @@ import wave from "../../images/wave.png"
 import youtube from "../../images/Youtube Music.png"
 import spotify from "../../images/Spotify.png"
 import deezer from "../../images/Deezer.png"
+import { withTranslation } from 'react-i18next'
+
+
 
 import {
   TitleStyle,
@@ -14,7 +17,7 @@ import {
   Socialsstyle,
 } from "./services.styles"
 
-const Services = () => {
+const Services = ({t}) => {
   return (
     <div className="Services">
       <ServicesPosition>
@@ -23,7 +26,7 @@ const Services = () => {
         </div>
         <Pos>
           <div className="title">
-            <TitleStyle>SERVICES WE SUPPORT</TitleStyle>
+            <TitleStyle>{t('SERVICES WE SUPPORT')}</TitleStyle>
           </div>
           <div className="row">
             <Socials
@@ -35,7 +38,7 @@ const Services = () => {
             <Socials picture={deezer} classname="row__item" id="deezer" />
           </div>
           <div className="more">
-            <Morestyle>MORE SERVICES COMING SOON</Morestyle>
+            <Morestyle>{t('MORE SERVICES COMING SOON')}</Morestyle>
           </div>
         </Pos>
       </ServicesPosition>
@@ -55,4 +58,4 @@ const Socials = ({ picture, classname, id }) => {
   )
 }
 
-export default Services
+export default withTranslation()(Services)

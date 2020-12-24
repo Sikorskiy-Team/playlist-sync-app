@@ -1,14 +1,17 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link } from '@wapps/gatsby-plugin-i18next'
 
 import wave from "../../images/wave2.png"
 import logo from "../../images/Logofoot.png"
 import instagram from "../../images/Instagram.png"
 import facebook from "../../images/Facebook.png"
 
+import { withTranslation } from 'react-i18next';
+
+
 import { FooterStyle, MenuTitle, MenuItems } from "./footer.styles"
 
-const Footer = () => {
+const Footer = ({t}) => {
   return (
     <div>
       <FooterStyle>
@@ -21,14 +24,14 @@ const Footer = () => {
           </div>
           <div className="socials">
             <MenuTitle>Socials</MenuTitle>
-            <MenuItems to="/">Contact us</MenuItems>
-            <MenuItems to="/">Telegram bot</MenuItems>
+            <MenuItems to="/">{t('Contact us')}</MenuItems>
+            <MenuItems to="/">{t('Telegram bot')}</MenuItems>
           </div>
           <div className="company">
             <MenuTitle>Company</MenuTitle>
-            <MenuItems to="/">About</MenuItems>
-            <MenuItems to="/">Support</MenuItems>
-            <MenuItems to="/">Privacy Policy</MenuItems>
+            <MenuItems to="/">{t('About')}</MenuItems>
+            <MenuItems to="/">{t('Support')}</MenuItems>
+            <MenuItems to="/">{t('Privacy Policy')}</MenuItems>
           </div>
           <div className="socials-links">
             <div className="inst">
@@ -48,4 +51,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default withTranslation()(Footer)
