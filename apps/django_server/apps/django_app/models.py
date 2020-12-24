@@ -1,5 +1,4 @@
 from djongo import models
-from django import forms
 
 
 class Token(models.Model):
@@ -59,5 +58,6 @@ class User(models.Model):
     synchronization_list = models.ArrayField(model_container=Synchronization, default=None)
     playlist_lits = models.ArrayField(model_container=Playlist, default=None)
     settings = models.EmbeddedField(model_container=Settings, default=None)
+
     class Meta:
         ordering = ['name']
