@@ -1,26 +1,36 @@
 import React from "react"
-import Background from "../../images/Background"
+import { Link } from "gatsby"
 
-import { StartSection }from "./startnow.styles.js"
+import backgr from "../../images/Background.png"
 
-
+import {
+  Startnow_style,
+  Title_style,
+  Subtitle_style,
+  Startnow_button,
+  Startnow_link,
+} from "./startnow.styles"
 
 const StartNow = () => {
-    return(
-        <div>
-            <StartSection>
-                    <div className = "imgBackground">
-                        <div className = "text1">
-                                <p>TRANSFER YOUR PLAYLISTS AND FAVORITES</p>
-                        </div>
-                        <div className = "text 2">
-                                <p>top wasting your time transferring music data between <br> different streaming platforms, let CubeMusic do the job!</p>
-                        </div>
-                        <div className = "buttonStart">
-                                <a href = "#">Start Now</a>
-                        </div>
-                    </div>
-            </StartSection>
-        </div>
-    )
+  return (
+    <div>
+      <Startnow_style>
+        <Title_style className="first-stroke">
+          TRASFER YOUR PLAYLISTS AND
+        </Title_style>
+        <Title_style>FAVORITES</Title_style>
+        <Subtitle_style className="second-stroke">
+          Stop wasting your time transferring music data between
+        </Subtitle_style>
+        <Subtitle_style>
+          different streaming platforms, let CubeMusic do the job!
+        </Subtitle_style>
+        <Startnow_button className="butto">
+          <Startnow_link to="../pages/app/login.js">START NOW</Startnow_link>
+        </Startnow_button>
+      </Startnow_style>
+    </div>
+  )
 }
+
+export default StartNow
