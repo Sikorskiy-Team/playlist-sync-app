@@ -179,7 +179,7 @@ const FooterStyle = styled.div`
   background: #292929;
 `
 const MenuTitle = styled.p`
-  font-family: Segoe UI;
+  font-family: Noto Sans;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -199,7 +199,7 @@ const MenuTitle = styled.p`
 `
 
 const MenuItems = styled(Link)`
-  font-family: Segoe UI;
+  font-family: Noto Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
