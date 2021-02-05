@@ -5,6 +5,8 @@
   "version": "0.2.0",
   "author": "Bondarenko Stanislav <stassss2009@gmail.com>, Zheleznova Valeriya <lzheleznova2609@gmail.com>, Tryfanov Dmytro <worthdyingfor8@gmail.com>, Deriugin Egor <gorynychgeorge@gmail.com>",
   "dependencies": {
+    "@auth0/auth0-react": "^1.2.0",
+    "auth0-js": "^9.14.0",
     "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.11.1",
     "bootstrap": "^4.5.3",

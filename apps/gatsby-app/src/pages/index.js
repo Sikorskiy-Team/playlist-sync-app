@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Auth0Provider from "@auth0/auth0-react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

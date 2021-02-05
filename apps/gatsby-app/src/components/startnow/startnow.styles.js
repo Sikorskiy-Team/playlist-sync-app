@@ -77,6 +77,10 @@ const Startnow_link = styled(Link)`
   :hover {
     text-decoration: none;
   }
+
+  :visited {
+    color: #ffffff;
+  }
 `
 
 export {

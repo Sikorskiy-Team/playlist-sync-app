@@ -220,6 +220,10 @@ const MenuItems = styled(Link)`
     text-decoration: underline;
   }
 
+  :visited {
+    color: #ffffff;
+  }
+
   @media (max-width: 800px) {
     font-size: 20px;
   }
