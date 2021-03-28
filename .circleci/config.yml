@@ -7,7 +7,7 @@ executors:
     working_directory: ~/work
   gatsby:
     docker:
-      - image: node:15-buster
+      - image: node
     working_directory: ~/work
   git-crypt:
     docker:
