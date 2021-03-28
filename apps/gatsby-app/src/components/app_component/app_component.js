@@ -32,7 +32,7 @@ const App = () => {
         <App_menu user={user} />
         <div>
           <button
-            onClick={() => logout({ returnTo: process.env.AUTH0_CALLBACK })}
+            onClick={() => logout({ returnTo: process.env.GATSBY_AUTH0_CALLBACK })}
             style={{"position": "absolute"}}
           >
             Log out
