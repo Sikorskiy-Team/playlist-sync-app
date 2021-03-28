@@ -4,6 +4,8 @@ require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
 
+console.log(process.env)
+
 const dynamicPlugins = []
 // pick data from 3 months ago
 const startDate = new Date()
