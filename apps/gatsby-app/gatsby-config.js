@@ -1,5 +1,5 @@
 let activeEnv = process.env.GATSBY_ENV || 'development'
-console.log(activeEnv)
+console.log(`Active environment: ${activeEnv}\n`)
 require('dotenv').config({
   path: `.env.${activeEnv}`,
 })
