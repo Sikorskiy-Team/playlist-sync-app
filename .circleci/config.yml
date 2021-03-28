@@ -41,7 +41,7 @@ jobs:
           name: Copy across app.yaml config
           working_directory: repo/apps/django_server
           command: |
-            echo "export DJANGO_ENV=development" >> $BASH_ENV
+            echo "export DJANGO_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
             source $BASH_ENV
             python3 ./app.yaml.py
       - run:
@@ -89,7 +89,7 @@ jobs:
       - run:
           name: Gatsby Build
           command: |
-            echo "export GATSBY_ENV=development" >> $BASH_ENV
+            echo "export GATSBY_ENV=$CIRCLE_BRANCH" >> $BASH_ENV
             source $BASH_ENV
             npm run build
           working_directory: repo/apps/gatsby-app
@@ -135,7 +135,6 @@ workflows:
                 - master
                 - staging
                 - development
-                - ci_fix
       - deploy-django:
           name: deploy-django
           requires:
@@ -146,7 +145,6 @@ workflows:
                 - master
                 - staging
                 - development
-                - ci_fix
       - build-gatsby:
           name: build-gatsby
           requires:
