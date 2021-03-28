@@ -23,9 +23,7 @@ export const wrapRootElement = ({ element }) => {
     <Auth0Provider
       domain={process.env.AUTH0_DOMAIN}
       clientId={process.env.AUTH0_CLIENTID}
-      audience={process.env.GATSBY_AUDIENCE} //TODO: find out what is it
-      scope="read:users"
-      redirectUri={process.env.AUTH0_CALLBACK}
+      redirectUri={process.env.GATSBY_APP_URL + "/app"}
       onRedirectCallback={onRedirectCallback}
     >
       {element}
