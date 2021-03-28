@@ -20,7 +20,8 @@ import {
   LibraryText_Style,
 } from "./app_menu.styles"
 
-const App_menu = () => {
+const App_menu = ({user}) => {
+  console.log(user)
   return (
     <div>
       <Menu_style>
@@ -28,7 +29,7 @@ const App_menu = () => {
           <Profile_picture>
             <img src={prof} alt="" className="prof-pic"></img>
           </Profile_picture>
-          <Text_style>Name Surname</Text_style>
+          <Text_style>{user.name}</Text_style>
           <Settings_button>
             <img src={set_icon} alt=""></img>
           </Settings_button>

@@ -1,13 +1,13 @@
-import React from "React"
+import React from "react"
 import { Link } from "gatsby"
 import { Router } from "@reach/router"
-import { login, isAuthenticated, getProfile } from "../../../utils/auth"
-import LoginButton from "../../../components/loginButton"
+import { login, isAuthenticated, getProfile } from "../../utils/auth"
+import LoginButton from "../loginButton"
 
-import logo from "../../../images/Logofoot.png"
+import logo from "../../images/Logofoot.png"
 
-import Layout from "../../../components/layout"
-import SEO from "../../../components/seo"
+import Layout from "../layout"
+import SEO from "../seo"
 
 import {
   Login_styles,

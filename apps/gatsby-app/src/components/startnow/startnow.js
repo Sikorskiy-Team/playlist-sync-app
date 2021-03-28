@@ -24,7 +24,7 @@ const StartNow = () => {
           different streaming platforms, let CubeMusic do the job!
         </Subtitle_style>
         <Startnow_button className="butto">
-          <Startnow_link to="/app/login/login">START NOW</Startnow_link>
+          <Startnow_link to="/app">START NOW</Startnow_link>
         </Startnow_button>
       </Startnow_style>
     </div>

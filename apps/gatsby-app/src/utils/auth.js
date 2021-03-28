@@ -5,11 +5,11 @@ const isBrowser = typeof window !== "undefined"
 
 const auth = isBrowser
   ? new auth0.WebAuth({
-      domain: "http://playlist-sync-app-295119.ey.r.appspot.com/api/v1",
-      clientID: "5fe33d45d4b3df0041366b4b",
-      redirectUri: "http://localhost:8000/callback",
-      responseType: "token id_token",
-      scope: "openid profile email",
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENTID,
+    redirectUri: process.env.AUTH0_CALLBACK,
+    responseType: "token id_token",
+    scope: "openid profile email",
     })
   : {}
 
@@ -34,7 +34,9 @@ export const login = () => {
     return
   }
 
-  auth.authorize()
+  auth.authorize({
+    appState: `${window.location.pathname}${window.location.search}`,
+  })
 }
 
 const setSession = (cb = () => {}) => (err, authResult) => {
@@ -50,10 +52,22 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.idToken = authResult.idToken
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
-    localStorage.setItem("isLoggedIn", true)
-    navigate("/app/login/login")
+    localStorage.setItem("isLoggedIn", "true")
+    const redirect = authResult.appState || "/"
+    navigate(redirect)
     cb()
   }
+}
+
+export const silentAuth = callback => {
+  if (!isAuthenticated()) return callback()
+
+  auth.checkSession(
+    {
+      state: window.location.pathname + window.location.search,
+    },
+    setSession(callback)
+  )
 }
 
 export const handleAuthentication = () => {
@@ -66,4 +80,9 @@ export const handleAuthentication = () => {
 
 export const getProfile = () => {
   return user
+}
+
+export const logout = () => {
+  localStorage.setItem("isLoggedIn", "false")
+  auth.logout()
 }
