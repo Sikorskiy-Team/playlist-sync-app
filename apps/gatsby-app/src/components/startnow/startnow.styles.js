@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-// import Backgr from "../../images/Background.png"
+import Bg from "../../images/Background.png"
 
 const Startnow_style = styled.div`
   position: absolute;
@@ -10,7 +10,7 @@ const Startnow_style = styled.div`
   top: 100px;
   left: 0px;
   width: 100%;
-  background: url("./static/Background.png");
+  background: url(${Bg});
   background-size: cover;
   height: 974px;
   align-items: center;
@@ -76,6 +76,10 @@ const Startnow_link = styled(Link)`
 
   :hover {
     text-decoration: none;
+  }
+
+  :visited {
+    color: #ffffff;
   }
 `
 

@@ -1,8 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import backgr from "../../images/Background.png"
-
 import {
   Startnow_style,
   Title_style,
@@ -26,7 +24,7 @@ const StartNow = () => {
           different streaming platforms, let CubeMusic do the job!
         </Subtitle_style>
         <Startnow_button className="butto">
-          <Startnow_link to="../pages/app/login.js">START NOW</Startnow_link>
+          <Startnow_link to="/app">START NOW</Startnow_link>
         </Startnow_button>
       </Startnow_style>
     </div>
