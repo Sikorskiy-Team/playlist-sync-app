@@ -135,6 +135,7 @@ workflows:
                 - master
                 - staging
                 - development
+                - ci_fix
       - deploy-django:
           name: deploy-django
           requires:
@@ -145,6 +146,7 @@ workflows:
                 - master
                 - staging
                 - development
+                - ci_fix
       - build-gatsby:
           name: build-gatsby
           requires:
