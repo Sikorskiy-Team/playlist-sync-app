@@ -21,9 +21,9 @@ const onRedirectCallback = (appState) => navigate(appState?.returnTo || '/app');
 export const wrapRootElement = ({ element }) => {
   return (
     <Auth0Provider
-      domain={process.env.AUTH0_DOMAIN}
-      clientId={process.env.AUTH0_CLIENTID}
-      redirectUri={process.env.GATSBY_APP_URL + "/app"}
+      domain={process.env.GATSBY_AUTH0_DOMAIN}
+      clientId={process.env.GATSBY_AUTH0_CLIENTID}
+      redirectUri={process.env.GATSBY_AUTH0_CALLBACK}
       onRedirectCallback={onRedirectCallback}
     >
       {element}
